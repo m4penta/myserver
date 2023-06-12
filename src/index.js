@@ -6,10 +6,13 @@ const morgan = require('morgan')
 const { engine } = require ('express-handlebars');
 const app = express()
 const port = 3000
+// Use static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 //http logger
 app.use(morgan('combined'))
-app.use(express.static(path.join(__dirname,"public")))
+
+
 // template engine
 app.engine('hbs', engine({
   extname: '.hbs'
