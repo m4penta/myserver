@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "beautiful": "lint-staged",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "watch": "node-sass --watch src/resources/scss/ -o src/public/css/",
@@ -24,14 +25,27 @@
     "url": "https://github.com/m4penta/myserver/issues"
   },
   "homepage": "https://github.com/m4penta/myserver#readme",
+  "lint-staged": {
+    "./src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "express": "^4.18.2",
     "express-handlebars": "^7.0.7",
-    "handlebars": "^4.7.7"
+    "handlebars": "^4.7.7",
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.3.0"
   },
   "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "morgan": "^1.10.0",
     "node-sass": "^9.0.0",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "prettier": "2.8.8"
   }
 }
