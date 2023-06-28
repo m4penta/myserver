@@ -22,10 +22,11 @@ class SiteController {
         
         // res.render('home');
     //}
-     // Get /search
-    show(req,res){
-        res.render('search')
-    }
+     
+     // [GET] /search
+     search(req, res) {
+      res.render('search');
+  }
 }
 
 module.exports = new SiteController;
