@@ -1,4 +1,4 @@
-
+const methodOverride = require('method-override')
 const path = require('path');
 const route = require('./routes')
 const express = require('express')
@@ -9,6 +9,8 @@ const port = 3000
 // Use static folder
 app.use(express.static(path.join(__dirname, 'public')));
 const db = require('./config/db');
+//use menthod override
+app.use(methodOverride('_method'))
 //http logger
 app.use(morgan('combined'))
 
@@ -19,7 +21,10 @@ app.use(express.json())
 
 // template engine
      app.engine('hbs', engine({
-  extname: '.hbs'
+  extname: '.hbs',
+  helpers:{
+    sum: (a,b) => a+b,
+  }
 }));
 //connect Database
 

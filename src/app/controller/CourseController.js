@@ -26,6 +26,20 @@ class CourseController {
     .then(() => res.redirect('/'))
     .catch(error =>{})
   }
+  //[GET] /courses/:id/edit
+  edit(req, res, next) {
+    console.log(req.params.id)
+    Course.findById(req.params.id)
+    .then((course) => res.render("courses/edit", {
+      course: mongooseToObj(course)
+    }))
+    .catch(next)
+    
+  }
+  //[put] /courses/:id
+  update(req, res, next) {
+    res.json(req.body);
+  }
 }
 
 module.exports = new CourseController();
